@@ -2,7 +2,7 @@
 
 namespace Daniesy;
 
-use Daniesy\Record\Record;
+use Daniesy\Record\Records;
 use Daniesy\Record\Types;
 
 class Digger
@@ -15,17 +15,17 @@ class Digger
      * @param string $hostname
      * @param string $type
      * @param int $timeout
-     * @return array
+     * @return Records
      * @throws RecordNotSupportedException
      */
-    public function getRecords(string $hostname, string $type, int $timeout = 5)
+    public function getRecords(string $hostname, string $type, int $timeout = 5) : Records
     {
         if (!Types::has($type)) {
             throw new RecordNotSupportedException();
         }
 
         $output = $this->execute($hostname, $type, $timeout);
-        return Record::parseOutput($output, $type);
+        return new Records($type, $output);
     }
     
 }
