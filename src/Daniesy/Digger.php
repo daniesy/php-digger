@@ -25,7 +25,7 @@ class Digger
         }
 
         $output = $this->execute($hostname, $type, $timeout);
-        return new Records($type, $output);
+        return new Records($output);
     }
     
 }

@@ -9,7 +9,7 @@ abstract class Record
         $mapping = $this->mapping();
         foreach($data as $index => $value) {
             if (isset($mapping[$index]) && property_exists($this, $mapping[$index])) {
-                $this->{$mapping[$index]} = $value;
+                $this->{$mapping[$index]} = trim($value, "\"");
             }
         }
     }

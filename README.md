@@ -1,4 +1,5 @@
 # DIGGER
+[![Build Status](https://travis-ci.org/daniesy/php-digger.svg?branch=master)](https://travis-ci.org/daniesy/php-digger)
 
 A simple way to fetch DNS Resource Records associated with a hostname.
 
@@ -10,8 +11,9 @@ Using digger is easy as 1, 2, 3.
 	require 'vendor/autoload.php';
 
 	use Daniesy\Digger;
+	use Daniesy\Record\Types;
 
-	$records = (new Digger)->getRecords('ping-pong.dev', 'A');
+	$records = (new Digger)->getRecords('ping-pong.dev', Types::A);
 	foreach($records as $record) {
     	var_dump($record);
 	}
@@ -24,13 +26,14 @@ Using digger is easy as 1, 2, 3.
 
 You can install `Digger` with composer by running the following command.
 
-`composer require daniesy/php-digger`
+`composer require daniesy/php-digger:dev-master`
 
 ### Parameters
 
 - **host**
    The host you want to fetch the DNS records from
 - **type**
-   The type of DNS Records you want to get. At the moment, only the following records are supported: `A`, `AAAA`, `TXT`. I'll add more at a later point.
+   The type of DNS Records you want to get. At the moment, only the following records are supported: `A`, `AAAA`, `TXT`, `CNAME`, `MX`, `NS`. I'll add more at a later point.
+   If you want to fetch all supported records in one query, set `ANY` as the type.
 - **timeout**
    The timeout in seconds after which the call should fail. The default timeout is `5` seconds.

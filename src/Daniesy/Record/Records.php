@@ -17,18 +17,20 @@ class Records implements \Iterator
 
     /**
      * Records constructor.
-     * @param string $type
      * @param array $data
      */
-    public function __construct(string $type, array $data = [])
+    public function __construct(array $data = [])
     {
         $this->index = 0;
         $this->data = [];
 
         foreach ($data as $line) {
             $data = explode(' ', preg_replace('!\s+!', ' ', $line));
-            $className = '\\Daniesy\\Record\\' .ucfirst(strtolower($type));
-            $this->data[] = new $className($data);
+            $type = $data[3];
+            if (Types::has($type)) {
+                $className = '\\Daniesy\\Record\\' . ucfirst(strtolower($type));
+                $this->data[] = new $className($data);
+            }
         }
     }
 
