@@ -37,3 +37,7 @@ You can install `Digger` with composer by running the following command.
    If you want to fetch all supported records in one query, set `ANY` as the type.
 - **timeout**
    The timeout in seconds after which the call should fail. The default timeout is `5` seconds.
+   
+### Notice
+
+In order for digger to work, `dig` needs to be installed on your machine. A [google search](https://www.google.com/search?q=how+to+install+dig) would help with this one.
