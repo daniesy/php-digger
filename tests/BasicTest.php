@@ -94,4 +94,12 @@ class BasicTest extends TestCase
         $this->assertCount(1, $results);
         $this->assertTrue($results->has('ping-pong.dev.'));
     }
+
+    public function testPTRRecord()
+    {
+        $results = (new Digger)->getRecords('chatchup.com', Types::PTR);
+        $this->assertInstanceOf(Records::class, $results);
+        $this->assertCount(1, $results);
+        $this->assertTrue($results->has('test.chatchup.com.'));
+    }
 }
