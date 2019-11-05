@@ -52,7 +52,7 @@ class BasicTest extends TestCase
     {
         $results = (new Digger)->getRecords('ping-pong.dev', Types::TXT);
         $this->assertInstanceOf(Records::class, $results);
-        $this->assertCount(2, $results);
+        $this->assertCount(3, $results);
         $this->assertTrue($results->has('ca3-0af80d5094ed4818a87817f250fa8aec'));
         $this->assertTrue($results->has('c32215855a403ca2b71c6467a4419731-946a91770eee10104a19f6eb31b20004'));
         $this->assertFalse($results->has('banana'));
@@ -77,5 +77,13 @@ class BasicTest extends TestCase
         $this->assertTrue($results->has('ns-666.awsdns-19.net.'));
         $this->assertTrue($results->has('aspmx.l.google.com.'));
         $this->assertFalse($results->has('hidden'));
+    }
+
+    public function testCAARecord()
+    {
+        $results = (new Digger)->getRecords('chatchup.com', Types::CAA);
+        $this->assertInstanceOf(Records::class, $results);
+        $this->assertCount(8, $results);
+        $this->assertTrue($results->has('comodoca.com'));
     }
 }

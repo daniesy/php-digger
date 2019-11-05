@@ -11,10 +11,11 @@ class Types
     const AAAA = "AAAA";
     const TXT = "TXT";
     const CNAME = "CNAME";
+    const CAA = "CAA";
     const MX = "MX";
     const NS = "NS";
 
-    const TYPES = [self::ANY, self::A, self::AAAA, self::TXT, self::CNAME, self::MX, self::NS];
+    const TYPES = [self::ANY, self::A, self::AAAA, self::TXT, self::CNAME, self::MX, self::NS, self::CAA];
 
     public static function has(string $type) : bool
     {
