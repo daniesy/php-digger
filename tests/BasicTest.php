@@ -71,7 +71,7 @@ class BasicTest extends TestCase
     {
         $results = (new Digger)->getRecords('attacksimulator.com', Types::ANY);
         $this->assertInstanceOf(Records::class, $results);
-        $this->assertCount(12, $results);
+        $this->assertCount(13, $results);
         $this->assertTrue($results->has('google-site-verification=ZuDv79kcrxqvmVVNkWROtWXjlHmoIrJA3ld29-rt1tY'));
         $this->assertTrue($results->has('94.130.135.206'));
         $this->assertTrue($results->has('ns-666.awsdns-19.net.'));
@@ -101,5 +101,13 @@ class BasicTest extends TestCase
         $this->assertInstanceOf(Records::class, $results);
         $this->assertCount(1, $results);
         $this->assertTrue($results->has('test.chatchup.com.'));
+    }
+
+    public function testSOARecord()
+    {
+        $results = (new Digger)->getRecords('chatchup.com', Types::SOA);
+        $this->assertInstanceOf(Records::class, $results);
+        $this->assertCount(1, $results);
+        $this->assertTrue($results->has('mira.ns.cloudflare.com.'));
     }
 }

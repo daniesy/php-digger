@@ -15,9 +15,10 @@ class Types
     const NS = "NS";
     const PTR = "PTR";
     const SRV = "SRV";
+    const SOA = "SOA";
     const TXT = "TXT";
 
-    const TYPES = [self::ANY, self::A, self::AAAA, self::TXT, self::CNAME, self::MX, self::NS, self::CAA, self::SRV, self::PTR];
+    const TYPES = [self::ANY, self::A, self::AAAA, self::TXT, self::CNAME, self::MX, self::NS, self::CAA, self::SRV, self::SOA, self::PTR];
 
     public static function has(string $type) : bool
     {
