@@ -1,4 +1,4 @@
-# DIGGER
+# DIGGER [![Build Status](https://travis-ci.org/daniesy/php-digger.svg?branch=master)](https://travis-ci.org/daniesy/php-digger)
 
 A simple way to fetch DNS Resource Records associated with a hostname.
 
@@ -31,6 +31,6 @@ You can install `Digger` with composer by running the following command.
 - **host**
    The host you want to fetch the DNS records from
 - **type**
-   The type of DNS Records you want to get. At the moment, only the following records are supported: `A`, `AAAA`, `TXT`. I'll add more at a later point.
+   The type of DNS Records you want to get. At the moment, only the following records are supported: `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `PTR`, `SOA`, `SRV`, `TXT`. I'll add more at a later point.
 - **timeout**
    The timeout in seconds after which the call should fail. The default timeout is `5` seconds.
