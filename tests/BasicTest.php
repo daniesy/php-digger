@@ -86,4 +86,12 @@ class BasicTest extends TestCase
         $this->assertCount(8, $results);
         $this->assertTrue($results->has('comodoca.com'));
     }
+
+    public function testSRVRecord()
+    {
+        $results = (new Digger)->getRecords('_test._tcp.chatchup.com', Types::SRV);
+        $this->assertInstanceOf(Records::class, $results);
+        $this->assertCount(1, $results);
+        $this->assertTrue($results->has('ping-pong.dev.'));
+    }
 }
