@@ -23,9 +23,9 @@ class BasicTest extends TestCase
         $results = (new Digger)->getRecords('ping-pong.dev', Types::AAAA);
         $this->assertInstanceOf(Records::class, $results);
         $this->assertCount(2, $results);
-        $this->assertTrue($results->has('2606:4700:30::681f:4095'));
-        $this->assertTrue($results->has('2606:4700:30::681f:4195'));
-        $this->assertFalse($results->has('2606:47300:30::681f:4195'));
+        $this->assertTrue($results->has('2606:4700:3037::681f:4095'));
+        $this->assertTrue($results->has('2606:4700:3037::681f:4095'));
+        $this->assertFalse($results->has('2606:47300:3037::681f:4195'));
     }
 
     public function testMXRecords()
@@ -81,31 +81,31 @@ class BasicTest extends TestCase
 
     public function testCAARecord()
     {
-        $results = (new Digger)->getRecords('chatchup.com', Types::CAA);
+        $results = (new Digger)->getRecords('ping-pong.site', Types::CAA);        
         $this->assertInstanceOf(Records::class, $results);
-        $this->assertCount(8, $results);
-        $this->assertTrue($results->has('comodoca.com'));
+        $this->assertCount(6, $results);
+        $this->assertTrue($results->has('letsencrypt.org'));
     }
 
     public function testSRVRecord()
     {
-        $results = (new Digger)->getRecords('_test._tcp.chatchup.com', Types::SRV);
+        $results = (new Digger)->getRecords('_test._tcp.ping-pong.site', Types::SRV);
         $this->assertInstanceOf(Records::class, $results);
         $this->assertCount(1, $results);
         $this->assertTrue($results->has('ping-pong.dev.'));
     }
 
-    public function testPTRRecord()
-    {
-        $results = (new Digger)->getRecords('chatchup.com', Types::PTR);
-        $this->assertInstanceOf(Records::class, $results);
-        $this->assertCount(1, $results);
-        $this->assertTrue($results->has('test.chatchup.com.'));
-    }
+//     public function testPTRRecord()
+//     {
+//         $results = (new Digger)->getRecords('chatchup.com', Types::PTR);
+//         $this->assertInstanceOf(Records::class, $results);
+//         $this->assertCount(1, $results);
+//         $this->assertTrue($results->has('test.chatchup.com.'));
+//     }
 
     public function testSOARecord()
     {
-        $results = (new Digger)->getRecords('chatchup.com', Types::SOA);
+        $results = (new Digger)->getRecords('ping-pong.site', Types::SOA);
         $this->assertInstanceOf(Records::class, $results);
         $this->assertCount(1, $results);
         $this->assertTrue($results->has('mira.ns.cloudflare.com.'));
